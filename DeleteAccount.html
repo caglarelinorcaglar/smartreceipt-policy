@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Delete Account - Smart Receipt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -11,132 +14,383 @@
             box-sizing: border-box;
         }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #10172C 0%, #1a2844 100%);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0B0F14 0%, #1a1f2e 100%);
+            color: #e5e7eb;
+            line-height: 1.7;
             min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        /* Navigation */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .nav-link {
+            color: #9ca3af;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .nav-link:hover {
+            color: #22c55e;
+        }
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(251, 146, 60, 0.1) 100%);
+            border-radius: 24px;
+            margin-bottom: 60px;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+        .app-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 24px;
+            background: linear-gradient(135deg, #ef4444 0%, #fb923c 100%);
+            border-radius: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            box-shadow: 0 10px 40px rgba(239, 68, 68, 0.3);
         }
-        .container {
-            max-width: 600px;
-            background: white;
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        .app-icon svg {
+            width: 60px;
+            height: 60px;
+            fill: white;
         }
         h1 {
-            color: #ef4444;
-            margin-bottom: 20px;
-            font-size: 2em;
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ef4444 0%, #fb923c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+        }
+        .subtitle {
+            font-size: 1.1rem;
+            color: #9ca3af;
+            font-weight: 300;
+        }
+        /* Content */
+        .content {
+            background: rgba(30, 41, 59, 0.5);
+            border-radius: 20px;
+            padding: 50px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
         }
         h2 {
-            color: #1e40af;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            font-size: 1.3em;
+            font-size: 1.8rem;
+            color: #22c55e;
+            margin: 40px 0 20px 0;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        h2:first-child {
+            margin-top: 0;
+        }
+        h2::before {
+            content: '';
+            width: 4px;
+            height: 28px;
+            background: linear-gradient(180deg, #22c55e 0%, #38bdf8 100%);
+            border-radius: 2px;
         }
         p {
-            margin-bottom: 15px;
-            color: #4b5563;
+            margin-bottom: 20px;
+            color: #d1d5db;
+            font-size: 1.05rem;
+        }
+        .steps {
+            margin: 30px 0;
+        }
+        .step {
+            background: rgba(34, 197, 94, 0.05);
+            border-left: 4px solid #22c55e;
+            padding: 20px 24px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        .step-number {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #22c55e 0%, #38bdf8 100%);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 32px;
+            font-weight: 700;
+            color: white;
+            margin-right: 12px;
+        }
+        .step-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #f3f4f6;
+            margin-bottom: 8px;
+        }
+        .step-desc {
+            color: #d1d5db;
+            margin: 0;
         }
         ul {
-            margin-left: 20px;
-            margin-bottom: 15px;
+            margin: 20px 0;
+            padding-left: 0;
+            list-style: none;
         }
         li {
-            margin-bottom: 8px;
-            color: #4b5563;
+            padding: 12px 0 12px 40px;
+            position: relative;
+            color: #d1d5db;
+            font-size: 1.05rem;
+        }
+        li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #22c55e;
+            font-weight: bold;
+            font-size: 1.2rem;
         }
         .warning {
-            background: #fef3c7;
-            border-left: 4px solid #f59e0b;
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 4px;
-        }
-        .warning strong {
-            color: #92400e;
-        }
-        .contact-box {
-            background: #f0f9ff;
-            padding: 20px;
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid #ef4444;
+            padding: 20px 24px;
+            margin: 30px 0;
             border-radius: 8px;
-            margin-top: 30px;
-            text-align: center;
         }
-        .email-button {
-            display: inline-block;
-            background: #3b82f6;
-            color: white;
-            padding: 12px 30px;
+        .warning p {
+            margin: 0;
+            color: #fca5a5;
+        }
+        .info {
+            background: rgba(56, 189, 248, 0.1);
+            border-left: 4px solid #38bdf8;
+            padding: 20px 24px;
+            margin: 30px 0;
             border-radius: 8px;
+        }
+        .info p {
+            margin: 0;
+            color: #93c5fd;
+        }
+        /* Buttons */
+        .button-group {
+            display: flex;
+            gap: 16px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            border-radius: 12px;
             text-decoration: none;
             font-weight: 600;
-            margin-top: 15px;
-            transition: background 0.3s;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            border: 2px solid;
         }
-        .email-button:hover {
-            background: #2563eb;
+        .btn-primary {
+            background: linear-gradient(135deg, #ef4444 0%, #fb923c 100%);
+            color: white;
+            border-color: transparent;
         }
-        .back-link {
-            display: inline-block;
-            margin-top: 20px;
-            color: #3b82f6;
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(239, 68, 68, 0.4);
+        }
+        .btn-secondary {
+            background: transparent;
+            color: #22c55e;
+            border-color: #22c55e;
+        }
+        .btn-secondary:hover {
+            background: rgba(34, 197, 94, 0.1);
+            transform: translateY(-2px);
+        }
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+        .footer-link {
+            color: #9ca3af;
             text-decoration: none;
+            transition: color 0.3s ease;
         }
-        .back-link:hover {
-            text-decoration: underline;
+        .footer-link:hover {
+            color: #22c55e;
+        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            .content {
+                padding: 30px 20px;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+            .app-icon {
+                width: 80px;
+                height: 80px;
+            }
+            .app-icon svg {
+                width: 48px;
+                height: 48px;
+            }
+            .button-group {
+                flex-direction: column;
+            }
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🗑️ Delete Your Account</h1>
-        <p>We're sorry to see you go! If you'd like to delete your Smart Receipt account and all associated data, please
-            follow the instructions below.</p>
-        <div class="warning">
-            <strong>⚠️ Warning:</strong> Account deletion is permanent and cannot be undone. All your receipt data will
-            be permanently deleted.
-        </div>
-        <h2>What Will Be Deleted</h2>
-        <ul>
-            <li><strong>Your account:</strong> Your Google sign-in association with Smart Receipt</li>
-            <li><strong>Local data:</strong> All receipts stored on your device (uninstall the app)</li>
-            <li><strong>Cloud backup:</strong> Receipts in your Google Drive (you can delete these manually)</li>
-        </ul>
-        <h2>How to Request Account Deletion</h2>
-        <p>To delete your account, please send us an email with the following information:</p>
-        <ul>
-            <li>Your registered email address (the one you use to sign in)</li>
-            <li>Confirmation that you want to delete your account</li>
-            <li>Any feedback (optional)</li>
-        </ul>
-        <div class="contact-box">
-            <h2 style="margin-top: 0;">Contact Us</h2>
-            <p>Send your deletion request to:</p>
-            <a href="mailto:support@smartreceipt.ai?subject=Account%20Deletion%20Request&body=Email%20address%3A%20%0A%0AI%20confirm%20that%20I%20want%20to%20delete%20my%20Smart%20Receipt%20account%20and%20all%20associated%20data."
-                class="email-button">
-                📧 Request Account Deletion
+        <!-- Navigation -->
+        <div class="nav">
+            <a href="https://caglarelinorcaglar.github.io/smartreceipt-policy/" class="nav-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                </svg>
+                Back to Home
             </a>
-            <p style="margin-top: 15px; font-size: 0.9em; color: #6b7280;">
-                Email: receiptvault25@gmail.com
-            </p>
+            <a href="https://caglarelinorcaglar.github.io/smartreceipt-policy/privacy-policy.html" class="nav-link">
+                Privacy Policy
+            </a>
         </div>
-        <h2>Response Time</h2>
-        <p>We will process your deletion request within <strong>30 days</strong> and send you a confirmation email once
-            completed.</p>
-        <h2>Alternative: Delete Data Yourself</h2>
-        <p>You can also delete your data manually:</p>
-        <ul>
-            <li><strong>Sign out</strong> from the app (Settings → Sign Out)</li>
-            <li><strong>Uninstall</strong> the Smart Receipt app from your device</li>
-            <li><strong>Delete Google Drive backups</strong> (if you enabled cloud sync)</li>
-        </ul>
-        <a href="https://smartreceipt.ai" class="back-link">← Back to Smart Receipt</a>
+        <!-- Header -->
+        <div class="header">
+            <div class="app-icon">
+                <!-- Trash Icon SVG -->
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="white">
+                    <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z" />
+                </svg>
+            </div>
+            <h1>Delete Your Account</h1>
+            <p class="subtitle">We're sorry to see you go</p>
+        </div>
+        <!-- Content -->
+        <div class="content">
+            <p>If you'd like to delete your Smart Receipt account and remove your data from our servers, you can do so
+                easily from within the app.</p>
+            <h2>How to Delete Your Account</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-title">
+                        <span class="step-number">1</span>
+                        Open the App
+                    </div>
+                    <p class="step-desc">Launch Smart Receipt on your device</p>
+                </div>
+                <div class="step">
+                    <div class="step-title">
+                        <span class="step-number">2</span>
+                        Go to Profile
+                    </div>
+                    <p class="step-desc">Tap the Profile tab at the bottom of the screen</p>
+                </div>
+                <div class="step">
+                    <div class="step-title">
+                        <span class="step-number">3</span>
+                        Scroll to Account Section
+                    </div>
+                    <p class="step-desc">Find the "Account" section in your profile</p>
+                </div>
+                <div class="step">
+                    <div class="step-title">
+                        <span class="step-number">4</span>
+                        Tap "Delete Account"
+                    </div>
+                    <p class="step-desc">Confirm your decision when prompted</p>
+                </div>
+            </div>
+            <div class="info">
+                <p><strong>Instant Deletion:</strong> Your account data (name, email, AI token balance) will be deleted
+                    from our servers immediately.</p>
+            </div>
+            <h2>What Gets Deleted</h2>
+            <ul>
+                <li><strong>From Our Servers:</strong> Your name, email address, and AI token balance</li>
+                <li><strong>From Your Device:</strong> All app data (if you uninstall the app)</li>
+            </ul>
+            <h2>What Doesn't Get Deleted Automatically</h2>
+            <ul>
+                <li><strong>Your Receipts:</strong> Since we never stored your receipts, there's nothing to delete.
+                    They're only on YOUR device and YOUR Google Drive.</li>
+                <li><strong>Google Drive Backups:</strong> If you enabled Google Drive sync, those files are in YOUR
+                    Google Drive. You can delete them manually if you want.</li>
+            </ul>
+            <div class="warning">
+                <p><strong>⚠️ This action cannot be undone!</strong> Once you delete your account, you'll lose access to
+                    any purchased AI tokens and will need to create a new account if you want to use the app again.</p>
+            </div>
+            <h2>Need Help?</h2>
+            <p>If you're having trouble deleting your account or have questions, contact us:</p>
+            <div class="button-group">
+                <a href="mailto:receiptvault25@gmail.com?subject=Account%20Deletion%20Help&body=I%20need%20help%20deleting%20my%20account.%0A%0AMy%20email%3A%20"
+                    class="btn btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                        <polyline points="22,6 12,13 2,6" />
+                    </svg>
+                    Email Support
+                </a>
+                <a href="https://caglarelinorcaglar.github.io/smartreceipt-policy/" class="btn btn-secondary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                    </svg>
+                    Go to Home
+                </a>
+            </div>
+            <h2>Alternative: Just Sign Out</h2>
+            <p>If you're not sure about deleting your account permanently, you can simply sign out from the app. Your
+                data will remain in our servers, and you can sign back in anytime.</p>
+        </div>
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-links">
+                <a href="https://caglarelinorcaglar.github.io/smartreceipt-policy/" class="footer-link">Home</a>
+                <a href="https://caglarelinorcaglar.github.io/smartreceipt-policy/privacy-policy.html"
+                    class="footer-link">Privacy Policy</a>
+            </div>
+            <p>© 2024 Smart Receipt. All rights reserved.</p>
+            <p>Made with ❤️ for privacy-conscious users</p>
+        </div>
     </div>
 </body>
 </html>
