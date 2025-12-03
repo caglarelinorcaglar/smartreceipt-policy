@@ -147,6 +147,17 @@
         .highlight p {
             margin: 0;
         }
+        .warning {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid #ef4444;
+            padding: 20px 24px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+        .warning p {
+            margin: 0;
+            color: #fca5a5;
+        }
         /* Contact section */
         .contact-box {
             background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(56, 189, 248, 0.15) 100%);
@@ -230,110 +241,121 @@
                 explains how we collect, use, disclose, and safeguard your information when you use our mobile
                 application.</p>
             <div class="highlight">
-                <p><strong>Privacy-First Approach:</strong> Your receipt data is stored only on YOUR device and YOUR
-                    personal Google Drive. We never have access to your receipts or personal information.</p>
+                <p><strong>Privacy-First Approach:</strong> Your receipt data is stored ONLY on YOUR device and YOUR
+                    personal Google Drive. We NEVER have access to your receipts or receipt content.</p>
             </div>
-            <h2>1. Information We Collect</h2>
-            <h3>1.1 Information You Provide</h3>
+            <h2>1. What We Collect (Very Little!)</h2>
+            <h3>1.1 Information Stored in Our Firebase Database</h3>
+            <p>We store ONLY the following in our servers:</p>
             <ul>
-                <li><strong>Account Information:</strong> When you sign in with Google, we collect only your name, email
-                    address, and profile picture for authentication purposes.</li>
+                <li><strong>Your Name:</strong> From your Google account (for display purposes)</li>
+                <li><strong>Your Email Address:</strong> From your Google account (for authentication)</li>
+                <li><strong>AI Token Balance:</strong> Number of AI scans you have remaining (for billing)</li>
             </ul>
+            <p><strong>That's it!</strong> We store nothing else about you.</p>
             <h3>1.2 What We DON'T Collect</h3>
+            <div class="warning">
+                <p><strong>We do NOT collect, store, or have access to:</strong></p>
+            </div>
             <ul>
-                <li><strong>Receipt Data:</strong> We do NOT collect, store, or have access to your receipt images,
-                    PDFs, or any receipt content. All receipts are stored ONLY on your device and optionally in YOUR
-                    personal Google Drive.</li>
-                <li><strong>Personal Information from Receipts:</strong> We never see merchant names, purchase amounts,
-                    dates, or any other information from your receipts.</li>
-                <li><strong>Location Data:</strong> We do not collect any location data.</li>
-            </ul>
-            <h3>1.3 Automatically Collected Information (Anonymous)</h3>
-            <ul>
-                <li><strong>Device Information:</strong> Device type, operating system version (for compatibility).</li>
-                <li><strong>Usage Analytics:</strong> Anonymous app usage statistics and crash reports to improve the
-                    app.</li>
-                <li><strong>AI Token Usage:</strong> Number of AI scans used (for billing purposes only).</li>
+                <li><strong>Receipt Images or PDFs:</strong> Stored only on YOUR device</li>
+                <li><strong>Receipt Content:</strong> Merchant names, amounts, dates, items - we never see any of this
+                </li>
+                <li><strong>Notes or Categories:</strong> Stored only on YOUR device</li>
+                <li><strong>Device Information:</strong> No device IDs, no phone numbers, no unique identifiers</li>
+                <li><strong>Location Data:</strong> We don't track where you are</li>
+                <li><strong>Usage Analytics:</strong> We don't track which features you use (except anonymous crash
+                    reports)</li>
+                <li><strong>Contacts or Photos:</strong> We only access what you explicitly share</li>
             </ul>
             <h2>2. How We Use Your Information</h2>
-            <p>We use the collected information to:</p>
+            <p>We use the minimal information we collect (name, email, token count) ONLY for:</p>
             <ul>
-                <li>Provide and maintain the app's functionality</li>
-                <li>Process AI-powered receipt scanning</li>
-                <li>Sync your data with your Google Drive</li>
-                <li>Send warranty expiration reminders</li>
-                <li>Improve app performance and user experience</li>
-                <li>Provide customer support</li>
-                <li>Detect and prevent fraud or abuse</li>
+                <li><strong>Authentication:</strong> To let you sign in with Google</li>
+                <li><strong>Billing:</strong> To track how many AI scans you've used</li>
+                <li><strong>Support:</strong> To help you if you contact us with questions</li>
             </ul>
-            <h2>3. Data Storage and Security</h2>
-            <h3>3.1 Local Storage</h3>
-            <p>All receipt images and data are stored locally on your device using encrypted storage provided by your
-                operating system.</p>
-            <h3>3.2 Cloud Backup (Optional)</h3>
-            <p>If you enable Google Drive sync, your receipts are backed up to YOUR personal Google Drive account. We do
-                not have access to your Google Drive or the data stored there.</p>
-            <h3>3.3 Security Measures</h3>
+            <p><strong>What we DON'T do with your information:</strong></p>
             <ul>
-                <li>End-to-end encryption for data transmission</li>
-                <li>Secure authentication via Google Sign-In</li>
-                <li>No third-party data storage</li>
-                <li>Regular security audits</li>
+                <li>We do NOT process your receipts (Google Gemini AI does that directly from your device)</li>
+                <li>We do NOT sync your data (you sync directly with YOUR Google Drive)</li>
+                <li>We do NOT send notifications (your device handles warranty reminders locally)</li>
+                <li>We do NOT sell or share your data with anyone</li>
+                <li>We do NOT use your data for advertising or marketing</li>
             </ul>
+            <h2>3. Where Your Data is Stored</h2>
+            <h3>3.1 Your Receipt Data (On YOUR Device Only)</h3>
+            <p>All receipt images, PDFs, and metadata are stored ONLY on your device using your phone's encrypted
+                storage. We never see this data.</p>
+            <h3>3.2 Optional Google Drive Backup (YOUR Google Drive)</h3>
+            <p>If you enable Google Drive sync, your receipts are backed up to YOUR personal Google Drive account. This
+                is a direct connection between your device and your Google Drive. We do NOT have access to your Google
+                Drive or any files stored there.</p>
+            <h3>3.3 Our Firebase Database (Minimal Data Only)</h3>
+            <p>We store only your name, email, and AI token balance in Firebase. This data is protected by Firebase
+                security rules that prevent unauthorized access.</p>
             <h2>4. Third-Party Services</h2>
-            <p>We use the following third-party services:</p>
+            <p>The app uses these third-party services:</p>
             <ul>
-                <li><strong>Google Sign-In:</strong> For authentication</li>
-                <li><strong>Google Drive API:</strong> For optional cloud backup</li>
-                <li><strong>Google Gemini AI:</strong> For receipt scanning and data extraction</li>
-                <li><strong>Firebase:</strong> For crash reporting and analytics</li>
-                <li><strong>RevenueCat:</strong> For in-app purchases</li>
-                <li><strong>Google AdMob:</strong> For displaying advertisements</li>
+                <li><strong>Google Sign-In:</strong> For authentication (you sign in with your Google account)</li>
+                <li><strong>Google Drive API:</strong> YOU use this to backup to YOUR Google Drive (we don't access it)
+                </li>
+                <li><strong>Google Gemini AI:</strong> Receipt images are sent directly from YOUR device to Google's AI
+                    for scanning. We never see the images or results.</li>
+                <li><strong>Firebase:</strong> We store your name, email, and token count. Also provides anonymous crash
+                    reporting.</li>
+                <li><strong>RevenueCat:</strong> Processes in-app purchases for AI token packages</li>
+                <li><strong>Google AdMob:</strong> Displays ads (may collect anonymous advertising data)</li>
             </ul>
-            <h2>5. Data Sharing and Disclosure</h2>
-            <p>We do not sell, trade, or rent your personal information. We may share information only in these
-                circumstances:</p>
+            <div class="highlight">
+                <p><strong>Important:</strong> When you scan a receipt with AI, the image goes directly from your device
+                    to Google Gemini AI. We never see, store, or have access to your receipt images.</p>
+            </div>
+            <h2>5. Data Sharing</h2>
+            <p>We do NOT sell, trade, or rent your information. Period.</p>
+            <p>We may share your minimal information (name/email) only in these rare cases:</p>
             <ul>
-                <li><strong>With Your Consent:</strong> When you explicitly authorize us to share information</li>
-                <li><strong>Legal Requirements:</strong> When required by law or to protect our rights</li>
-                <li><strong>Service Providers:</strong> With trusted third-party services that help us operate the app
-                    (they cannot use your data for other purposes)</li>
+                <li><strong>With Your Consent:</strong> If you explicitly ask us to share information</li>
+                <li><strong>Legal Requirements:</strong> If required by law (court order, subpoena)</li>
+                <li><strong>Service Providers:</strong> Firebase and RevenueCat need your email for authentication and
+                    billing (they cannot use it for other purposes)</li>
             </ul>
-            <h2>6. Your Rights and Choices</h2>
-            <p>You have the right to:</p>
+            <h2>6. Your Rights</h2>
+            <p>You have complete control over your data:</p>
             <ul>
-                <li>Access your personal data</li>
-                <li>Correct inaccurate data</li>
-                <li>Delete your account and all associated data</li>
-                <li>Opt-out of Google Drive sync</li>
-                <li>Disable warranty reminders</li>
-                <li>Export your data</li>
+                <li><strong>Access:</strong> View your name, email, and token balance in the app</li>
+                <li><strong>Delete:</strong> Delete your account from app settings (removes name, email, token count
+                    from our servers)</li>
+                <li><strong>Export:</strong> Export your receipts from your device or Google Drive anytime</li>
+                <li><strong>Opt-Out:</strong> Don't want Google Drive sync? Don't enable it. It's optional.</li>
             </ul>
             <h2>7. Data Retention</h2>
-            <p>We retain your data only as long as necessary to provide our services. You can delete your account and
-                all associated data at any time from the app settings.</p>
+            <p>We keep your name, email, and token balance as long as you have an account. When you delete your account,
+                we remove this data from our servers.</p>
+            <p><strong>Your receipts:</strong> Since we don't store your receipts, there's nothing for us to delete.
+                They're on YOUR device and YOUR Google Drive.</p>
             <h2>8. Children's Privacy</h2>
-            <p>Our app is not intended for children under 13. We do not knowingly collect personal information from
-                children under 13. If you believe we have collected such information, please contact us immediately.</p>
-            <h2>9. International Data Transfers</h2>
-            <p>Your information may be transferred to and processed in countries other than your own. We ensure
-                appropriate safeguards are in place to protect your data.</p>
-            <h2>10. Changes to This Privacy Policy</h2>
-            <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new
-                Privacy Policy on this page and updating the "Last updated" date.</p>
+            <p>Our app is not intended for children under 13. We do not knowingly collect information from children
+                under 13.</p>
+            <h2>9. International Users</h2>
+            <p>Your minimal data (name, email, token count) is stored in Firebase servers which may be located in
+                different countries. Firebase complies with international data protection laws.</p>
+            <h2>10. Changes to This Policy</h2>
+            <p>We may update this Privacy Policy. We'll notify you by updating the "Last updated" date. Continued use of
+                the app means you accept the changes.</p>
             <h2>11. California Privacy Rights (CCPA)</h2>
-            <p>California residents have additional rights under the CCPA, including:</p>
+            <p>California residents have these rights:</p>
             <ul>
-                <li>Right to know what personal information is collected</li>
-                <li>Right to delete personal information</li>
-                <li>Right to opt-out of the sale of personal information (we do not sell your data)</li>
-                <li>Right to non-discrimination for exercising your rights</li>
+                <li>Right to know what personal information we collect (name, email, token count)</li>
+                <li>Right to delete your information (delete account in app settings)</li>
+                <li>Right to opt-out of sale of personal information (we don't sell your data)</li>
+                <li>Right to non-discrimination</li>
             </ul>
             <h2>12. GDPR Compliance (European Users)</h2>
-            <p>If you are in the European Economic Area (EEA), you have rights under the GDPR, including:</p>
+            <p>If you're in the European Economic Area (EEA), you have these rights under GDPR:</p>
             <ul>
-                <li>Right to access your personal data</li>
-                <li>Right to rectification of inaccurate data</li>
+                <li>Right to access your data</li>
+                <li>Right to correct inaccurate data</li>
                 <li>Right to erasure ("right to be forgotten")</li>
                 <li>Right to restrict processing</li>
                 <li>Right to data portability</li>
@@ -342,8 +364,8 @@
             <!-- Contact Box -->
             <div class="contact-box">
                 <h2>Contact Us</h2>
-                <p>If you have any questions about this Privacy Policy, please contact us:</p>
-                <a href="mailto:receiptvault25@gmail.com" class="email-link">support smartreceipt </a>
+                <p>Questions about this Privacy Policy?</p>
+                <a href="mailto:receiptvault25@gmail.com" class="email-link">support smart receipt</a>
             </div>
         </div>
         <!-- Footer -->
@@ -354,4 +376,3 @@
     </div>
 </body>
 </html>
-
